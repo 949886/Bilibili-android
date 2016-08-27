@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.lunareclipse.bilibili.R;
+import com.lunareclipse.bilibili.api.support.BilibiliCallback;
+import com.lunareclipse.bilibili.api.support.BilibiliResponse;
+import com.lunareclipse.bilibili.api.user.BilibiliUserAPI;
+import com.lunareclipse.bilibili.model.User;
 import com.lunareclipse.bilibili.ui.attention.AttentionFragment;
 import com.lunareclipse.bilibili.ui.categories.CategoriesFragment;
 import com.lunareclipse.bilibili.ui.discover.DiscoverFragment;
@@ -12,19 +16,15 @@ import com.lunareclipse.bilibili.ui.profile.ProfileFragment;
 import com.lunareclipse.bilibili.widget.tabbar.Tab;
 import com.lunareclipse.bilibili.widget.tabbar.TabBarActivity;
 
+
 public class MainActivity extends TabBarActivity
 {
-
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MainActivity extends TabBarActivity
                 new Tab(categories, CategoriesFragment.class, R.drawable.tab_icon_explore, R.color.tabbar_text),
                 new Tab(attention, AttentionFragment.class, R.drawable.tab_icon_explore, R.color.tabbar_text),
                 new Tab(discover, DiscoverFragment.class, R.drawable.tab_icon_explore, R.color.tabbar_text),
-                new Tab(profile, ProfileFragment.class, R.drawable.tab_icon_profile, R.color.tabbar_text),
+                new Tab(profile, ProfileFragment.class, R.drawable.tab_icon_profile, R.color.tabbar_text)
         };
     }
 

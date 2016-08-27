@@ -30,11 +30,6 @@ public abstract class TabBarActivity extends AppCompatActivity implements TabHos
     protected static final int ID_CONTENT = 0 + 1;
     protected static final int ID_SUBCONTENT = 0 + 2;
 
-    public interface Callback
-    {
-        void onTabChange(int index);
-    }
-
     protected abstract Tab[] tabs();
 //    protected abstract Color themeColor();
 

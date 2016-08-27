@@ -1,8 +1,5 @@
 package com.lunareclipse.bilibili.api.support;
 
-/**
- * Created by LunarEclipse on 16/8/15.
- */
 
 public class BilibiliException extends Exception
 {
