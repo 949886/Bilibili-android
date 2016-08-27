@@ -43,6 +43,9 @@ public class RecommendHome
     private BannerBean banner;
     private List<BodyBean> body;
 
+    /* Live Only */
+    private ExtBean ext;
+
     public String getParam()
     {
         return param;
@@ -101,6 +104,16 @@ public class RecommendHome
     public void setBody(List<BodyBean> body)
     {
         this.body = body;
+    }
+
+    public ExtBean getExt()
+    {
+        return ext;
+    }
+
+    public void setExt(ExtBean ext)
+    {
+        this.ext = ext;
     }
 
     public static class BannerBean
@@ -207,7 +220,6 @@ public class RecommendHome
         private String name;
         private String face;
         private int online;
-        private ExtBean ext;
 
         public String getTitle()
         {
@@ -348,32 +360,21 @@ public class RecommendHome
         {
             this.online = online;
         }
-
-        public ExtBean getExt()
-        {
-            return ext;
-        }
-
-        public void setExt(ExtBean ext)
-        {
-            this.ext = ext;
-        }
-
-        public static class ExtBean
-        {
-            @JSONField(name = "live_count")
-            private int liveCount;
-
-            public int getLiveCount()
-            {
-                return liveCount;
-            }
-
-            public void setLiveCount(int liveCount)
-            {
-                this.liveCount = liveCount;
-            }
-        }
     }
 
+    public static class ExtBean
+    {
+        @JSONField(name = "live_count")
+        private int liveCount;
+
+        public int getLiveCount()
+        {
+            return liveCount;
+        }
+
+        public void setLiveCount(int liveCount)
+        {
+            this.liveCount = liveCount;
+        }
+    }
 }

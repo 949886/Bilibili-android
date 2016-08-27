@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.lunareclipse.bilibili.R;
+import com.lunareclipse.bilibili.api.support.BilibiliCallback;
+import com.lunareclipse.bilibili.api.support.BilibiliResponse;
+import com.lunareclipse.bilibili.api.user.BilibiliUserAPI;
+import com.lunareclipse.bilibili.model.User;
 import com.lunareclipse.bilibili.ui.attention.AttentionFragment;
 import com.lunareclipse.bilibili.ui.categories.CategoriesFragment;
 import com.lunareclipse.bilibili.ui.discover.DiscoverFragment;
@@ -11,6 +15,7 @@ import com.lunareclipse.bilibili.ui.home.HomeFragment;
 import com.lunareclipse.bilibili.ui.profile.ProfileFragment;
 import com.lunareclipse.bilibili.widget.tabbar.Tab;
 import com.lunareclipse.bilibili.widget.tabbar.TabBarActivity;
+
 
 public class MainActivity extends TabBarActivity
 {
@@ -25,6 +30,21 @@ public class MainActivity extends TabBarActivity
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        BilibiliUserAPI.getUser(17281, new BilibiliCallback<User>()
+        {
+            @Override
+            public void onSuccess(User object, BilibiliResponse biliResponse)
+            {
+                User object1 = object;
+            }
+
+            @Override
+            public void onFailure(BilibiliResponse biliResponse)
+            {
+
+            }
+        });
     }
 
     @Override
@@ -41,7 +61,7 @@ public class MainActivity extends TabBarActivity
                 new Tab(categories, CategoriesFragment.class, R.drawable.tab_icon_explore, R.color.tabbar_text),
                 new Tab(attention, AttentionFragment.class, R.drawable.tab_icon_explore, R.color.tabbar_text),
                 new Tab(discover, DiscoverFragment.class, R.drawable.tab_icon_explore, R.color.tabbar_text),
-                new Tab(profile, ProfileFragment.class, R.drawable.tab_icon_profile, R.color.tabbar_text),
+                new Tab(profile, ProfileFragment.class, R.drawable.tab_icon_profile, R.color.tabbar_text)
         };
     }
 

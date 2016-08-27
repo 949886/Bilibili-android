@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * Created by LunarEclipse on 16/8/15.
  */
+
 public class User
 {
-
     /**
      *
      * [API]

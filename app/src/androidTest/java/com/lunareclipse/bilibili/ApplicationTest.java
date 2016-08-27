@@ -3,6 +3,7 @@ package com.lunareclipse.bilibili;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
+import com.lunareclipse.bilibili.api.app.BilibiliAppAPI;
 import com.lunareclipse.bilibili.api.video.BilibiliVideoAPI;
 
 /**
@@ -14,15 +15,7 @@ public class ApplicationTest extends ApplicationTestCase<Application>
     {
         super(Application.class);
 
-        BilibiliVideoAPI.getVideoURL(0, 0);
+        BilibiliAppAPI.getLiveHome(null);
 
-        new Thread(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                System.out.println("aaaaaaaaaaa");
-            }
-        });
     }
 }

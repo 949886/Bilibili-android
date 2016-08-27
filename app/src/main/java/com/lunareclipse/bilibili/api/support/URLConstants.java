@@ -13,7 +13,7 @@ public class URLConstants
     public static final String BILIBILI_VIDEO_INFO = "http://app.bilibili.com/x/view";
     public static final String BILIBILI_VIDEO_COMMENTS = "http://api.bilibili.com/feedback";
     public static final String BILIBILI_VIDEO_BP = "http://www.bilibili.com/widget/ajaxGetBP";
-    public static final String BILIBILI_VIDEO_PLAYURL = "http://interface.bilibili.com/playurl";     //暂不可用
+    public static final String BILIBILI_VIDEO_PLAYURL = "http://interface.bilibili.com/playurl";     //签名算法未知，暂不可用
     public static final String BILIBILI_VIDEO_PLAYURL_M = "http://www.bilibili.com/m/html5";             //低清开放接口
 
     public static final String BILIBILI_BANGUMI_INFO = "http://bangumi.bilibili.com/api/season_v3";
@@ -33,7 +33,6 @@ public class URLConstants
     public static final String BILIBILI_BANNER = "http://app.bilibili.com/x/banner/old";
 
     public static final String BILIBILI_LIVE_HOME = "http://live.bilibili.com/AppIndex/home";
-
     public static final String BILIBILI_RECOMMEND_HOME = "http://app.bilibili.com/x/v2/show";
     public static final String BILIBILI_BANGUMI_HOME = "http://bangumi.bilibili.com/api/app_index_page_v3";
     public static final String BILIBILI_BANGUMI_RECOMMEND = "http://bangumi.bilibili.com/api/bangumi_recommend";

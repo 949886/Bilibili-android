@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class LiveHome
 {
+    //[API]
+    // http://live.bilibili.com/AppIndex/home?device=phone&platform=ios&scale=2
 
     private List<BannerBean> banner;
     private List<EntranceIconsBean> entranceIcons;
