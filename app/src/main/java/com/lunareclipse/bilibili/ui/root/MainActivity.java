@@ -1,13 +1,8 @@
 package com.lunareclipse.bilibili.ui.root;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import com.lunareclipse.bilibili.R;
-import com.lunareclipse.bilibili.api.support.BilibiliCallback;
-import com.lunareclipse.bilibili.api.support.BilibiliResponse;
-import com.lunareclipse.bilibili.api.user.BilibiliUserAPI;
-import com.lunareclipse.bilibili.model.User;
 import com.lunareclipse.bilibili.ui.attention.AttentionFragment;
 import com.lunareclipse.bilibili.ui.categories.CategoriesFragment;
 import com.lunareclipse.bilibili.ui.discover.DiscoverFragment;

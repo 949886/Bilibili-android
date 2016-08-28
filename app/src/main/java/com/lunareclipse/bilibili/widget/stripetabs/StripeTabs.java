@@ -14,8 +14,9 @@ import android.widget.RadioGroup;
 import com.lunareclipse.bilibili.R;
 
 /**
- * TODO: document your custom view class.
+ * Created by LunarEclipse on 16/8/28.
  */
+
 public class StripeTabs extends RadioGroup
 {
 
