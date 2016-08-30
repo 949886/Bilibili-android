@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.lunareclipse.bilibili.api.support.BilibiliResponse;
 import com.lunareclipse.bilibili.api.support.URLConstants;
 import com.lunareclipse.bilibili.api.support.BilibiliCallback;
-import com.lunareclipse.bilibili.model.AVInfo;
+import com.lunareclipse.bilibili.model.AvInfo;
 import com.lunareclipse.bilibili.model.MPlayURL;
 
 import java.io.IOException;
@@ -50,7 +50,7 @@ public class BilibiliVideoAPI
      * @param aid
      * @param bilibiliCallback
      */
-    public static void getAVInfo(int aid, final BilibiliCallback<AVInfo> bilibiliCallback)
+    public static void getAvInfo(int aid, final BilibiliCallback<AvInfo> bilibiliCallback)
     {
         Request request = new Request.Builder().url(URLConstants.BILIBILIJJ_AV2CID + aid).build();
 
@@ -67,7 +67,7 @@ public class BilibiliVideoAPI
             public void onResponse(Call call, Response response) throws IOException
             {
                 String content = response.body().string();
-                AVInfo info = JSON.parseObject(content, AVInfo.class);
+                AvInfo info = JSON.parseObject(content, AvInfo.class);
                 if (bilibiliCallback != null)
                     bilibiliCallback.onSuccess(info, new BilibiliResponse(0, "ok"));
             }
@@ -106,10 +106,10 @@ public class BilibiliVideoAPI
 
     private static void getNormalQualityVideoURL(int aid, final int page, final BilibiliCallback<String> bilibiliCallback)
     {
-        getAVInfo(aid, new BilibiliCallback<AVInfo>()
+        getAvInfo(aid, new BilibiliCallback<AvInfo>()
         {
             @Override
-            public void onSuccess(AVInfo object, BilibiliResponse biliResponse)
+            public void onSuccess(AvInfo object, BilibiliResponse biliResponse)
             {
                 //Get origin url.
                 String jjurl = object.getList().get(page - 1).getMp4Url();

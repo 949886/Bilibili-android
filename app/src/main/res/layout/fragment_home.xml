@@ -9,7 +9,7 @@
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="36dp"
         android:id="@+id/toolbar"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -34,8 +34,8 @@
                    android:text="@string/home_live"
                    android:button="@null"
                    android:textColor="@color/slidebar_text"
-                   android:layout_marginLeft="10dp"
-                   android:layout_marginRight="10dp"/>
+                   android:layout_marginLeft="16dp"
+                   android:layout_marginRight="16dp"/>
 
                <RadioButton
                    android:layout_width="wrap_content"
@@ -44,8 +44,8 @@
                    android:id="@+id/radioButton"
                    android:button="@null"
                    android:textColor="@color/slidebar_text"
-                   android:layout_marginLeft="10dp"
-                   android:layout_marginRight="10dp"/>
+                   android:layout_marginLeft="16dp"
+                   android:layout_marginRight="16dp"/>
 
                <RadioButton
                    android:layout_width="wrap_content"
@@ -53,8 +53,8 @@
                    android:text="@string/home_bangumi"
                    android:button="@null"
                    android:textColor="@color/slidebar_text"
-                   android:layout_marginLeft="10dp"
-                   android:layout_marginRight="10dp"/>
+                   android:layout_marginLeft="16dp"
+                   android:layout_marginRight="16dp"/>
 
            </RadioGroup>
 
@@ -63,21 +63,12 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView"
+    <com.lunareclipse.bilibili.ui.home.RoundViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/top_round_corner"
-        android:fillViewport="true">
-
-        <android.support.v4.view.ViewPager
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/viewpager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </ScrollView>
+        android:background="@drawable/top_round_corner"/>
 
 </RelativeLayout>

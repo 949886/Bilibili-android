@@ -1,6 +1,10 @@
 package com.lunareclipse.bilibili.ui.home;
 
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,10 +13,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lunareclipse.bilibili.App;
 import com.lunareclipse.bilibili.R;
 import com.lunareclipse.bilibili.ui.home.bangumi.BangumiFragment;
 import com.lunareclipse.bilibili.ui.home.live.LiveFragment;
@@ -51,9 +58,10 @@ public class HomeFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
 
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         viewPager.setAdapter(new Adapter(getChildFragmentManager()));
+        viewPager.setClipChildren(true);
 
         return view;
     }
@@ -76,5 +84,28 @@ public class HomeFragment extends Fragment
         {
             return fragments[position];
         }
+
+    }
+}
+
+class RoundViewPager extends ViewPager
+{
+    public RoundViewPager(Context context)
+    {
+        super(context);
+    }
+
+    public RoundViewPager(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas)
+    {
+        Path clipPath = new Path();
+        clipPath.addRoundRect(new RectF(canvas.getClipBounds()), App.dp2px(5), App.dp2px(5), Path.Direction.CW);
+        canvas.clipPath(clipPath);
+        super.onDraw(canvas);
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by LunarEclipse on 16/8/24.
  */
-public class AVInfo
+public class AvInfo
 {
 
     /**

@@ -55,4 +55,5 @@ dependencies {
     compile 'com.github.Cutta:GifView:1.1'
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.beardedhen:androidbootstrap:2.3.0'
+    compile 'com.makeramen:roundedimageview:2.2.1'
 }

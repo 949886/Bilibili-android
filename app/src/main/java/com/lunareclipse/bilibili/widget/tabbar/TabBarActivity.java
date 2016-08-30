@@ -29,6 +29,7 @@ public abstract class TabBarActivity extends AppCompatActivity implements TabHos
 
     protected static final int ID_CONTENT = 0 + 1;
     protected static final int ID_SUBCONTENT = 0 + 2;
+    protected static final int ID_TABBAR = 0 + 3;
 
     protected abstract Tab[] tabs();
 //    protected abstract Color themeColor();
@@ -66,7 +67,8 @@ public abstract class TabBarActivity extends AppCompatActivity implements TabHos
         container.setClipChildren(false);
 
         layout = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
-        layout.addRule(BELOW, subcontent.getId());
+        layout.addRule(BELOW, ID_SUBCONTENT);
+        layout.addRule(ABOVE, ID_TABBAR);
         container.setLayoutParams(layout);
 
         content.addView(container);
@@ -75,6 +77,7 @@ public abstract class TabBarActivity extends AppCompatActivity implements TabHos
         layout = new LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         layout.addRule(ALIGN_PARENT_BOTTOM);
         tabBar.setLayoutParams(layout);
+        tabBar.setId(ID_TABBAR);
 
         content.addView(tabBar);
 
@@ -106,7 +109,7 @@ public abstract class TabBarActivity extends AppCompatActivity implements TabHos
     {
         tabBar = new TabBar(this);
         tabBar.setup(this, getSupportFragmentManager(), ID_CONTENT);
-        tabBar.getTabWidget().setShowDividers(0);
+        tabBar.getTabWidget().setShowDividers(0);   //Not show dividers.
         tabBar.addTabs(tabs());
         tabBar.setOnTabChangedListener(this);
     }

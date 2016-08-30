@@ -3,27 +3,40 @@ package com.lunareclipse.bilibili.ui.home.recommend;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.lunareclipse.bilibili.App;
 import com.lunareclipse.bilibili.R;
+import com.lunareclipse.bilibili.api.app.BilibiliAppAPI;
+import com.lunareclipse.bilibili.api.support.BilibiliCallback;
+import com.lunareclipse.bilibili.api.support.BilibiliResponse;
+import com.lunareclipse.bilibili.model.RecommendHome;
+import com.lunareclipse.bilibili.widget.extra.ExRecyclerView;
+import com.lunareclipse.bilibili.widget.pager.imageslider.ImageSlider;
+import com.makeramen.roundedimageview.RoundedImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RecommendFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 public class RecommendFragment extends Fragment
 {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private List<RecommendHome> items;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    @BindView(R.id.recyclerView) ExRecyclerView recyclerView;
+
+    private ImageSlider imageSlider;
 
 
     public RecommendFragment()
@@ -31,22 +44,9 @@ public class RecommendFragment extends Fragment
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecommendFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RecommendFragment newInstance(String param1, String param2)
+    public static RecommendFragment newInstance()
     {
         RecommendFragment fragment = new RecommendFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -54,19 +54,177 @@ public class RecommendFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
+
+        //Fetch homepage data then process asynchronously.
+        BilibiliAppAPI.getRecommendHome(new BilibiliCallback<List<RecommendHome>>()
         {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+            @Override
+            public void onSuccess(List<RecommendHome> object, BilibiliResponse biliResponse)
+            {
+                //Setup Recycler View.
+                items = object;
+
+                //Refresh UI on main thread.
+                getActivity().runOnUiThread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        if (recyclerView != null && recyclerView.getAdapter() != null)
+                            recyclerView.getAdapter().notifyDataSetChanged();
+                    }
+                });
+
+                //Setup image slider that shows banners.
+
+            }
+
+            @Override
+            public void onFailure(BilibiliResponse biliResponse) {}
+
+        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recommend, container, false);
+        View view = inflater.inflate(R.layout.fragment_recommend, container, false);
+        ButterKnife.bind(this, view);
+
+        //Initialize Image Slider.
+        imageSlider = new ImageSlider(getContext());
+        imageSlider.setLayoutParams(new ViewGroup.LayoutParams(WRAP_CONTENT, App.dp2px(105)));
+        imageSlider.setImageResources(new int[]{ R.mipmap.image1,  R.mipmap.image2, R.mipmap.image3});
+
+        //Initialize Recycler View.
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new Adapter());
+        recyclerView.setHeader(imageSlider);
+
+        return view;
+    }
+
+    //On behalf of every segment in recommend home page. E.G. Music zone, anime zone, game zone etc..
+     class ViewHolder extends RecyclerView.ViewHolder
+    {
+        private View itemView;
+
+        private RecommendHome item;
+
+        @BindView(R.id.icon) ImageView iconImageView;
+        @BindView(R.id.title) TextView titleTextView;
+        @BindView(R.id.moreInfo) TextView moreInfoTextView;
+        @BindView(R.id.recyclerView) ExRecyclerView recyclerView;
+
+        public ViewHolder(View itemView)
+        {
+            super(itemView);
+            this.itemView = itemView;
+            ButterKnife.bind(this, itemView);
+
+            recyclerView.setAdapter(new VideoAdapter());
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }
+
+        public void setup(RecommendHome item)
+        {
+            this.item = item;
+
+            titleTextView.setText(item.getTitle());
+
+            //Refresh UI on main thread.
+            getActivity().runOnUiThread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    if (recyclerView != null && recyclerView.getAdapter() != null)
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                }
+            });
+        }
+
+
+        //On behalf of every clickable video in every zone segment.
+        class VideoViewHolder extends RecyclerView.ViewHolder
+        {
+            private View itemView;
+            private RecommendHome.BodyBean item;
+
+            @BindView(R.id.cover) RoundedImageView coverImageView;
+            @BindView(R.id.title) TextView titleTextView;
+            @BindView(R.id.playCount) TextView playCountTextView;
+            @BindView(R.id.danmakuCount) TextView danmakuCountTextView;
+
+            public VideoViewHolder(View itemView)
+            {
+                super(itemView);
+                this.itemView = itemView;
+                ButterKnife.bind(this, itemView);
+            }
+
+            public void setup(RecommendHome.BodyBean item)
+            {
+                this.item = item;
+
+                Glide.with(getContext()).load(item.getCover()).into(coverImageView);
+                titleTextView.setText(item.getTitle());
+                playCountTextView.setText(Integer.toString(item.getPlay()));
+                danmakuCountTextView.setText(Integer.toString(item.getDanmaku()));
+            }
+        }
+
+        //For RecommendFragment.ViewHolder.VideoViewHolder
+        class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>
+        {
+
+            @Override
+            public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+            {
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.home_video, null);
+                return new VideoViewHolder(view);
+            }
+
+            @Override
+            public void onBindViewHolder(VideoViewHolder holder, int position)
+            {
+                holder.setup(item.getBody().get(position));
+            }
+
+            @Override
+            public int getItemCount()
+            {
+                if (item != null)
+                    return item.getBody().size();
+                return 0;
+            }
+        }
+    }
+
+    //For RecommendFragment.ViewHolder
+    private class Adapter extends RecyclerView.Adapter<ViewHolder>
+    {
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+        {
+            View view = LayoutInflater.from(getContext()).inflate(R.layout.home_segment, null);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position)
+        {
+            holder.setup(items.get(position));
+        }
+
+        @Override
+        public int getItemCount()
+        {
+            if (items != null)
+                return items.size();
+            return 0;
+        }
     }
 
 }
