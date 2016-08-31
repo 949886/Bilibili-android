@@ -36,12 +36,12 @@ public class ExRecyclerView extends RecyclerView
         super(context, attrs, defStyle);
     }
 
-    @Override
-    public void setAdapter(RecyclerView.Adapter adapter)
-    {
-        exAdapter = adapter;
-        super.setAdapter(new RecyclerViewAdapter());
-    }
+//    @Override
+//    public void setAdapter(RecyclerView.Adapter adapter)
+//    {
+//        exAdapter = adapter;
+//        super.setAdapter(new RecyclerViewAdapter());
+//    }
 
     public void setHeader(View header)
     {

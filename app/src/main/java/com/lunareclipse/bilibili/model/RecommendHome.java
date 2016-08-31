@@ -40,7 +40,7 @@ public class RecommendHome
     private String type;
     private String style;
     private String title;
-    private BannerBean banner;
+    private BannersBean banner;
     private List<BodyBean> body;
 
     /* Live Only */
@@ -86,12 +86,12 @@ public class RecommendHome
         this.title = title;
     }
 
-    public BannerBean getBanner()
+    public BannersBean getBanner()
     {
         return banner;
     }
 
-    public void setBanner(BannerBean banner)
+    public void setBanner(BannersBean banner)
     {
         this.banner = banner;
     }
@@ -116,29 +116,46 @@ public class RecommendHome
         this.ext = ext;
     }
 
-    public static class BannerBean
+    public static class BannersBean
     {
         /**
-         * id : 4772
-         * title : 频道精选 科技区 NO.26
-         * image : http://i0.hdslb.com/bfs/archive/8213de22329855da5a0e87226e86dd83730fc89b.jpg
-         * hash : ead7a11dd7b4c80b2a8b9c2368b311c5
-         * uri : http://www.bilibili.com/topic/v2/phone1474.html
+         * "banner":
+         * {
+         *      "bottom":
+         *      [{
+         *          "id": 5513,
+         *          "title": "小宇宙 哔哩哔哩X独立动画 合作企划",
+         *          "image": "http://i0.hdslb.com/bfs/archive/11c512379615304e5caf739f5dd7a36828702110.jpg",
+         *          "hash": "fd5414c13c26946574bf59322f8db1db",
+         *          "uri": "http://www.bilibili.com/topic/v2/phone1481.html"
+         *       }]
+         * }
          */
 
-        private List<TopBean> top;
+        private List<BannerBean> top;
+        private List<BannerBean> bottom;
 
-        public List<TopBean> getTop()
+        public List<BannerBean> getTop()
         {
             return top;
         }
 
-        public void setTop(List<TopBean> top)
+        public void setTop(List<BannerBean> top)
         {
             this.top = top;
         }
 
-        public static class TopBean
+        public List<BannerBean> getBottom()
+        {
+            return bottom;
+        }
+
+        public void setBottom(List<BannerBean> bottom)
+        {
+            this.bottom = bottom;
+        }
+
+        public static class BannerBean
         {
             private int id;
             private String title;
