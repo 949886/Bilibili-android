@@ -3,50 +3,38 @@ package com.lunareclipse.bilibili.ui.home.live;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.lunareclipse.bilibili.R;
+import com.lunareclipse.bilibili.adapter.LiveAdapter;
+import com.lunareclipse.bilibili.api.app.BilibiliAppAPI;
+import com.lunareclipse.bilibili.api.support.BilibiliCallback;
+import com.lunareclipse.bilibili.api.support.BilibiliResponse;
+import com.lunareclipse.bilibili.model.LiveHome;
+import com.lunareclipse.bilibili.widget.extra.ExRecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LiveFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class LiveFragment extends Fragment
 {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private LiveHome data;
+    private LiveAdapter adapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    @BindView(R.id.recyclerView) ExRecyclerView recyclerView;
 
     public LiveFragment()
     {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LiveFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static LiveFragment newInstance(String param1, String param2)
     {
         LiveFragment fragment = new LiveFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -54,19 +42,43 @@ public class LiveFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
+
+        BilibiliAppAPI.getLiveHome(new BilibiliCallback<LiveHome>()
         {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+            @Override
+            public void onSuccess(LiveHome object, BilibiliResponse biliResponse)
+            {
+                data = object;
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.setLiveHomeData(data);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(BilibiliResponse biliResponse){}
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_live, container, false);
+        View view = inflater.inflate(R.layout.fragment_live, container, false);
+        ButterKnife.bind(this, view);
+
+        //Initialize RecyclerView.
+        if (adapter == null)
+            adapter = new LiveAdapter(getContext());
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 
 }

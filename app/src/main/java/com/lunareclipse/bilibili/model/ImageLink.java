@@ -19,9 +19,9 @@ public class ImageLink
         this.src = src;
     }
 
-    public String getHeight()
+    public int getHeight()
     {
-        return height;
+        return Integer.parseInt(height);
     }
 
     public void setHeight(String height)
@@ -29,9 +29,9 @@ public class ImageLink
         this.height = height;
     }
 
-    public String getWidth()
+    public int getWidth()
     {
-        return width;
+        return Integer.parseInt(width);
     }
 
     public void setWidth(String width)

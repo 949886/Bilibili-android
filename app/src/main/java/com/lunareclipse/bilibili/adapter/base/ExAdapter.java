@@ -49,7 +49,7 @@ public abstract class ExAdapter<T extends ViewHolder> extends RecyclerView.Adapt
 
     /**
      * For onCreateViewHolder(ViewGroup, int) is final, this method is a replacement of it.
-     * Override this to return ViewHolder instead.
+     * Override this to return SegmentHolder instead.
      */
     public abstract  T onCreateViewHolder(ViewGroup parent, long viewType);
 
@@ -92,7 +92,6 @@ public abstract class ExAdapter<T extends ViewHolder> extends RecyclerView.Adapt
     @Override
     public void onBindViewHolder(T holder, int position, List<Object> payloads)
     {
-        Log.i("PPPPPPPPPPPPPP", "onBindViewHolder: " + position);
         if(getItemViewType(position) == Type.HEADER) return;
         if(getItemViewType(position) == Type.FOOTER) return;
         if (hasHeader) position -= 1;

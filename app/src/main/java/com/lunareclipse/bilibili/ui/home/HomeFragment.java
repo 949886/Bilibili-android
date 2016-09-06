@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment
     private Fragment[] fragments = {
             new LiveFragment(),
             new RecommendFragment(),
-            new BangumiFragment(),
+            new BangumiFragment()
     };
 
     public HomeFragment()
@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment
 
         viewPager.setAdapter(new Adapter(getChildFragmentManager()));
         viewPager.setClipChildren(true);
+        viewPager.setOffscreenPageLimit(3);
 
         return view;
     }

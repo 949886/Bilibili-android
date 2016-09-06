@@ -23,6 +23,12 @@ public class App extends Application
         return instance;
     }
 
+    @Override
+    public void onTrimMemory(int level)
+    {
+        super.onTrimMemory(level);
+    }
+
     public static int dp2px(float dpValue) {
         final float scale = instance.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);

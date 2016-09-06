@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#FF648F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="transparent">#00000000</color>
-
     <color name="blackTextColor">#222222</color>
     <color name="whiteTextColor">#eeeeee</color>
+
+    <color name="homeRecommendRank">#FDB728</color>
 
 </resources>

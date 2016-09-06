@@ -2,12 +2,13 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.lunareclipse.bilibili.ui.home.live.LiveFragment">
+             tools:context="com.lunareclipse.bilibili.ui.home.live.LiveFragment"
+             android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.lunareclipse.bilibili.widget.extra.ExRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Live"/>
+        android:orientation="vertical"
+        android:id="@+id/recyclerView"/>
 
 </FrameLayout>

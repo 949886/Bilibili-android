@@ -37,9 +37,9 @@ public class RecommendFragment extends Fragment
 {
     private List<RecommendHome> items;
 
-    @BindView(R.id.recyclerView) ExRecyclerView recyclerView;
-
     private RecommendAdapter adapter;
+
+    @BindView(R.id.recyclerView) ExRecyclerView recyclerView;
 
     public RecommendFragment()
     {
@@ -63,10 +63,9 @@ public class RecommendFragment extends Fragment
             @Override
             public void onSuccess(List<RecommendHome> object, BilibiliResponse biliResponse)
             {
-                //Setup Recycler View.
+                //Setup Recycler View, then refresh UI on main thread.
                 items = object;
 
-                //Refresh UI on main thread.
                 getActivity().runOnUiThread(new Runnable()
                 {
                     @Override
@@ -79,30 +78,6 @@ public class RecommendFragment extends Fragment
                         }
                     }
                 });
-
-                //Refresh image slider on main thread.
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run()
-                    {
-                        if (items.get(0) == null || items.get(0).getBanner() == null || items.get(0).getBanner().getTop() == null) return;
-
-                        List<BannerBean> topBanners = items.get(0).getBanner().getTop();
-                        List<ImageView> imageViews = new ArrayList<>();
-                        for (BannerBean banner : topBanners)
-                        {
-                            final ImageView imageView = new ImageView(getContext());
-                            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                            imageViews.add(imageView);
-
-                            Glide.with(getContext()).load(banner.getImage()).into(imageView);
-                        }
-
-                        ImageSlider imageSlider = adapter.getImageSlider();
-                        imageSlider.setImageViews(imageViews);
-                    }
-                });
-
             }
 
             @Override
@@ -118,7 +93,6 @@ public class RecommendFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_recommend, container, false);
         ButterKnife.bind(this, view);
-
 
         //Initialize Recycler View.
         if (adapter == null)
