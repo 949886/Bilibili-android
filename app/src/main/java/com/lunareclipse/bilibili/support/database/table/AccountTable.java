@@ -1,7 +1,7 @@
 package com.lunareclipse.bilibili.support.database.table;
 
 /**
- * Created by LunarEclipse on 16/8/19.
+ * Created by YaeSakura on 16/8/19.
  */
 public class AccountTable
 {

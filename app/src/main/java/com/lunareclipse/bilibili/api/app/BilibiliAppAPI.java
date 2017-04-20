@@ -16,7 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
- * Created by LunarEclipse on 16/8/26.
+ * Created by YaeSakura on 16/8/26.
  */
 
 public class BilibiliAppAPI

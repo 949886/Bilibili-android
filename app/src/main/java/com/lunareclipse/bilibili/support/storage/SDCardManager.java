@@ -7,7 +7,7 @@ import android.os.StatFs;
 import java.io.File;
 
 /**
- * Created by LunarEclipse on 16/8/17.
+ * Created by YaeSakura on 16/8/17.
  */
 public class SDCardManager
 {

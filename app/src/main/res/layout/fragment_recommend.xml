@@ -1,13 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.lunareclipse.bilibili.ui.home.recommend.RecommendFragment">
+             tools:context="com.lunareclipse.bilibili.ui.home.recommend.RecommendFragment"
+             android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.lunareclipse.bilibili.widget.extra.ExRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Recommend"/>
+        android:orientation="vertical"
+        android:id="@+id/recyclerView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

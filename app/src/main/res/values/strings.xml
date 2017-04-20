@@ -16,4 +16,12 @@
     <string name="home_recommend">推荐</string>
     <string name="home_bangumi">番剧</string>
 
+    <string name="home_recommend_rank">排行榜</string>
+    <string name="home_recommend_more">更多</string>
+
+    <plurals name="home_live_more_info">
+        <item quantity="one">当前%d个直播，进去看看</item>
+        <item quantity="other">当前%d个直播，进去看看</item>
+    </plurals>
+
 </resources>

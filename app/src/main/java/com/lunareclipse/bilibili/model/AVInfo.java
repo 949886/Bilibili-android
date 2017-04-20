@@ -3,9 +3,9 @@ package com.lunareclipse.bilibili.model;
 import java.util.List;
 
 /**
- * Created by LunarEclipse on 16/8/24.
+ * Created by YaeSakura on 16/8/24.
  */
-public class AVInfo
+public class AvInfo
 {
 
     /**

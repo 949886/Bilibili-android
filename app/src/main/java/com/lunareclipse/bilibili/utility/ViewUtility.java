@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by LunarEclipse on 16/8/18.
+ * Created by YaeSakura on 16/8/18.
  */
 public class ViewUtility
 {
