@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.lunareclipse.bilibili.support.database.table.AccountTable;
 
 /**
- * Created by LunarEclipse on 16/8/19.
+ * Created by YaeSakura on 16/8/19.
  */
 public class DAO extends SQLiteOpenHelper
 {

@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 /**
- * Created by LunarEclipse on 16/8/29.
+ * Created by YaeSakura on 16/8/29.
  */
 public abstract class ReuseAdapter<T extends View> extends BaseAdapter
 {

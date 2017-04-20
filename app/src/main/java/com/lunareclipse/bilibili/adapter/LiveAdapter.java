@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
- * Created by LunarEclipse on 16/9/1.
+ * Created by YaeSakura on 16/9/1.
  */
 
 public class LiveAdapter extends ExAdapter<LiveAdapter.SegmentHolder>
@@ -58,8 +58,11 @@ public class LiveAdapter extends ExAdapter<LiveAdapter.SegmentHolder>
     public SegmentHolder onCreateHeader(ViewGroup parent)
     {
         //Initialize Image Slider.
-        imageSlider = new ImageSlider(getContext());
-        imageSlider.setLayoutParams(new ViewGroup.LayoutParams(WRAP_CONTENT, App.dp2px(105)));
+        if (imageSlider == null)
+        {
+            imageSlider = new ImageSlider(getContext());
+            imageSlider.setLayoutParams(new ViewGroup.LayoutParams(WRAP_CONTENT, App.dp2px(105)));
+        }
 
         return new SegmentHolder(imageSlider);
     }

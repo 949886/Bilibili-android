@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * Created by LunarEclipse on 16/8/30.
+ * Created by YaeSakura on 16/8/30.
  */
 
 @SuppressWarnings("unchecked")
@@ -82,8 +82,16 @@ public abstract class ExAdapter<T extends ViewHolder> extends RecyclerView.Adapt
     {
         switch (viewType)
         {
-            case Type.HEADER: return onCreateHeader(parent);
-            case Type.FOOTER: return onCreateFooter(parent);
+            case Type.HEADER:
+                T header = onCreateHeader(parent);
+                if (header.itemView != null && header.itemView.getParent() != null)
+                    ((ViewGroup)header.itemView.getParent()).removeView(header.itemView);
+                return header;
+            case Type.FOOTER:
+                T footer = onCreateFooter(parent);
+                if (footer.itemView != null && footer.itemView.getParent() != null)
+                    ((ViewGroup)footer.itemView.getParent()).removeView(footer.itemView);
+                return footer;
             default: break;
         }
         return onCreateViewHolder(parent,(long)viewType);
@@ -135,6 +143,7 @@ public abstract class ExAdapter<T extends ViewHolder> extends RecyclerView.Adapt
             });
         }
     }
+
 
     public Context getContext()
     {

@@ -35,6 +35,8 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class RecommendFragment extends Fragment
 {
+    private View view;
+
     private List<RecommendHome> items;
 
     private RecommendAdapter adapter;
@@ -91,15 +93,19 @@ public class RecommendFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_recommend, container, false);
+        if (view == null)
+            view = inflater.inflate(R.layout.fragment_recommend, container, false);
         ButterKnife.bind(this, view);
 
         //Initialize Recycler View.
-        if (adapter == null)
-            adapter = new RecommendAdapter(getContext());
+        if (recyclerView.getLayoutManager() == null)
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+        if (adapter == null)
+        {
+            adapter = new RecommendAdapter(getContext());
+            recyclerView.setAdapter(adapter);
+        }
 
         return view;
     }

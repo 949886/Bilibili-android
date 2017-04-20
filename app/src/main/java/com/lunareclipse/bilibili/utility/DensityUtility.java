@@ -5,7 +5,7 @@ import android.content.Context;
 import com.lunareclipse.bilibili.App;
 
 /**
- * Created by LunarEclipse on 16/9/2.
+ * Created by YaeSakura on 16/9/2.
  */
 public class DensityUtility
 {

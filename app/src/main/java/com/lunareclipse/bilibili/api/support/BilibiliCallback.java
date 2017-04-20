@@ -1,7 +1,7 @@
 package com.lunareclipse.bilibili.api.support;
 
 /**
- * Created by LunarEclipse on 16/8/25.
+ * Created by YaeSakura on 16/8/25.
  */
 
 public abstract  class BilibiliCallback<T>

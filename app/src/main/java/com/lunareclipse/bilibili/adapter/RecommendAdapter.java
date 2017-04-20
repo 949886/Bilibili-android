@@ -33,7 +33,7 @@ import butterknife.ButterKnife;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
- * Created by LunarEclipse on 16/8/30.
+ * Created by YaeSakura on 16/8/30.
  */
 
 //Used in RecommendFragment
@@ -58,8 +58,12 @@ public class RecommendAdapter extends ExAdapter<RecommendAdapter.SegmentHolder>
     public SegmentHolder onCreateHeader(ViewGroup parent)
     {
         //Initialize Image Slider.
-        imageSlider = new ImageSlider(getContext());
-        imageSlider.setLayoutParams(new ViewGroup.LayoutParams(WRAP_CONTENT, App.dp2px(105)));
+        if (imageSlider == null)
+        {
+            imageSlider = new ImageSlider(getContext());
+            imageSlider.setLayoutParams(new ViewGroup.LayoutParams(WRAP_CONTENT, App.dp2px(105)));
+        }
+        else parent.removeView(imageSlider);
 
         return new SegmentHolder(imageSlider);
     }

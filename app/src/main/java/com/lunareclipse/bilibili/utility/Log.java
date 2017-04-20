@@ -3,7 +3,7 @@ package com.lunareclipse.bilibili.utility;
 import com.lunareclipse.bilibili.BuildConfig;
 
 /**
- * Created by LunarEclipse on 16/8/26.
+ * Created by YaeSakura on 16/8/26.
  */
 
 public class Log

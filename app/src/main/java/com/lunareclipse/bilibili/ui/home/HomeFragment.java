@@ -24,9 +24,12 @@ import com.lunareclipse.bilibili.R;
 import com.lunareclipse.bilibili.ui.home.bangumi.BangumiFragment;
 import com.lunareclipse.bilibili.ui.home.live.LiveFragment;
 import com.lunareclipse.bilibili.ui.home.recommend.RecommendFragment;
+import com.lunareclipse.bilibili.utility.DensityUtility;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.graphics.Path.Direction.CW;
 
 public class HomeFragment extends Fragment
 {
@@ -105,7 +108,9 @@ class RoundViewPager extends ViewPager
     protected void onDraw(Canvas canvas)
     {
         Path clipPath = new Path();
-        clipPath.addRoundRect(new RectF(canvas.getClipBounds()), App.dp2px(5), App.dp2px(5), Path.Direction.CW);
+        RectF rectF = new RectF(canvas.getClipBounds());
+        rectF.bottom += 20;
+        clipPath.addRoundRect(rectF, DensityUtility.dp2px(5), DensityUtility.dp2px(5), CW);
         canvas.clipPath(clipPath);
         super.onDraw(canvas);
     }

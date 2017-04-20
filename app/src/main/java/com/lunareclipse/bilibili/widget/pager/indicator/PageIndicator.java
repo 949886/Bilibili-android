@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * Created by LunarEclipse on 16/8/28.
+ * Created by YaeSakura on 16/8/28.
  */
 public class PageIndicator extends View implements ViewPager.OnPageChangeListener
 {

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import java.util.List;
 
 /**
- * Created by LunarEclipse on 16/8/29.
+ * Created by YaeSakura on 16/8/29.
  */
 
 public class ExRecyclerView extends RecyclerView

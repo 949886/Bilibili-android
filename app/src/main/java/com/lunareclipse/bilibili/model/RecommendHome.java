@@ -5,7 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import java.util.List;
 
 /**
- * Created by LunarEclipse on 16/8/26.
+ * Created by YaeSakura on 16/8/26.
  */
 public class RecommendHome
 {

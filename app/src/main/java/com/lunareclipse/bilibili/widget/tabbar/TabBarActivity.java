@@ -15,7 +15,7 @@ import static android.widget.RelativeLayout.LayoutParams.*;
 
 
 /**
- * Created by LunarEclipse on 16/8/18.
+ * Created by YaeSakura on 16/8/18.
  */
 
 public abstract class TabBarActivity extends AppCompatActivity implements TabHost.OnTabChangeListener

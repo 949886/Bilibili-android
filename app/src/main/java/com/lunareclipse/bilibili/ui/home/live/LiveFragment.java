@@ -22,6 +22,8 @@ import butterknife.ButterKnife;
 
 public class LiveFragment extends Fragment
 {
+    private View view;
+
     private LiveHome data;
     private LiveAdapter adapter;
 
@@ -65,18 +67,22 @@ public class LiveFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_live, container, false);
+        if (view == null)
+            view = inflater.inflate(R.layout.fragment_live, container, false);
         ButterKnife.bind(this, view);
 
         //Initialize RecyclerView.
-        if (adapter == null)
-            adapter = new LiveAdapter(getContext());
+        if (recyclerView.getLayoutManager() == null)
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+        if (adapter == null)
+        {
+            adapter = new LiveAdapter(getContext());
+            recyclerView.setAdapter(adapter);
+        }
+
 
         return view;
     }

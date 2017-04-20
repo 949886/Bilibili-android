@@ -54,6 +54,8 @@ public class BilibiliException extends Exception
     public static final int E_EXISTING_REVIEW_TOPICS = 12001;
     public static final int E_FAIL = -1;
     public static final int E_FAVORITE_LIST_IS_FULL = -1;
+    public static final int E_FAVORITE_EXIST = 11007;
+    public static final int E_FAVORITE_NOT_EXIST = 11013;
     public static final int E_FILENAME_IS_NOT_EXISTS = -1003;
     public static final int E_FILESIZE_RROR = -1005;
     public static final int E_FILE_UPLOAD_IS_NOT_A_VALID_IMAGE = -616;
