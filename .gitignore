@@ -56,3 +56,6 @@ freeline_project_description.json
 
 # OSX
 .DS_Store
+
+# IDE
+.idea/
