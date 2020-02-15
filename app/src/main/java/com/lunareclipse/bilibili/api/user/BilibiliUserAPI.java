@@ -1,8 +1,8 @@
 package com.lunareclipse.bilibili.api.user;
 
 import android.net.Uri;
-import android.support.v4.util.Pair;
 
+import android.util.Pair;
 import com.lunareclipse.bilibili.api.support.BilibiliCallback;
 import com.lunareclipse.bilibili.api.support.DefaultCallback;
 import com.lunareclipse.bilibili.api.support.URLConstants;

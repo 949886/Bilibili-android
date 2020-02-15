@@ -1,8 +1,6 @@
 package com.lunareclipse.bilibili.widget.tabbar;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -10,6 +8,8 @@ import android.widget.RelativeLayout;
 import static android.widget.RelativeLayout.*;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TabHost;
+import androidx.annotation.LayoutRes;
+import androidx.appcompat.app.AppCompatActivity;
 
 import static android.widget.RelativeLayout.LayoutParams.*;
 

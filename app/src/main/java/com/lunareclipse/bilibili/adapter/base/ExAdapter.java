@@ -1,13 +1,9 @@
 package com.lunareclipse.bilibili.adapter.base;
 
 import android.content.Context;
-import android.support.annotation.CallSuper;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -16,7 +12,7 @@ import java.util.List;
  */
 
 @SuppressWarnings("unchecked")
-public abstract class ExAdapter<T extends ViewHolder> extends RecyclerView.Adapter<T>
+public abstract class ExAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T>
 {
     private class Type
     {

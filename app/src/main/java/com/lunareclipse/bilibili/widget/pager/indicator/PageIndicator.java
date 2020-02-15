@@ -2,8 +2,8 @@ package com.lunareclipse.bilibili.widget.pager.indicator;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by YaeSakura on 16/8/28.

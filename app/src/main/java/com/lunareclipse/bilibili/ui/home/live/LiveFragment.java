@@ -2,13 +2,13 @@ package com.lunareclipse.bilibili.ui.home.live;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import com.lunareclipse.bilibili.R;
 import com.lunareclipse.bilibili.adapter.LiveAdapter;
 import com.lunareclipse.bilibili.api.app.BilibiliAppAPI;

@@ -4,11 +4,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.v4.app.FragmentTabHost;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TabHost;
-import android.widget.TextView;
+import androidx.fragment.app.FragmentTabHost;
 
 import java.util.ArrayList;
 import java.util.List;
